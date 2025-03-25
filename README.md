@@ -1,12 +1,10 @@
 # Diabetes-Prediction-Model
-##Overview
+## Overview
 This script implements a machine learning approach to predict diabetes outcomes using the diabetes dataset. It compares the performance of Logistic Regression and Linear Discriminant Analysis (LDA) for classification, evaluating how dropping certain features impacts the model, calculating expected loss with different thresholds, and comparing ROC curves for both models.
 
-Features
-
-Logistic Regression: A classification model used to predict the likelihood of diabetes (Outcome) based on various input features.
-Linear Discriminant Analysis (LDA): A classifier that is also evaluated for predicting diabetes, compared with logistic regression using ROC curves and AUC scores.
-Steps
+## Features
+- **Logistic Regression:** A model used to predict the probability of diabetes (Outcome) based on various input features.
+- **Linear Discriminant Analysis (LDA):** Another classification model that is compared with Logistic Regression using ROC curves and AUC scores.
 
 Part A: Cross-validation and Feature Comparison
 Load the diabetes dataset and prepare two versions of the feature set:
