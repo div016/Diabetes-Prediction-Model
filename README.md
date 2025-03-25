@@ -6,50 +6,40 @@ This script implements a machine learning approach to predict diabetes outcomes 
 - **Logistic Regression:** A model used to predict the probability of diabetes (Outcome) based on various input features.
 - **Linear Discriminant Analysis (LDA):** Another classification model that is compared with Logistic Regression using ROC curves and AUC scores.
 
-Part A: Cross-validation and Feature Comparison
-Load the diabetes dataset and prepare two versions of the feature set:
-All features, including SkinThickness.
-All features except SkinThickness.
-Standardize the features using StandardScaler.
-Perform 10-fold cross-validation for both feature sets.
-Compare the mean accuracy and standard deviation of cross-validation results to evaluate the effect of dropping SkinThickness from the dataset.
-Part B: Loss Function Evaluation
-Split the dataset into training and testing sets.
-Train a Logistic Regression model on the training set.
-Predict probabilities for the test set and compute the loss for three different thresholds:
-A naive baseline model (all zeros).
-Threshold at 0.5.
-A threshold of 0.2 (breakeven probability).
-The loss is computed based on the cost of false positives (500) and false negatives (2000).
-Part C: ROC Curve and AUC Comparison
-Train both Logistic Regression and LDA models on the scaled training set.
-Predict the probabilities of the positive class (diabetes = 1) for both models.
-Compute the ROC curve for both models and calculate the AUC (Area Under the Curve).
-Plot the ROC curve comparison for both models.
-Requirements
+## Steps
 
-pandas
-numpy
-scikit-learn
-matplotlib
+### Part A: Evaluating the Impact of Dropping a Feature
+- **Objective**: Determine whether removing the `SkinThickness` feature improves the performance of the Logistic Regression model.
+- **Approach**:
+  - Load the dataset and create two feature sets:
+    1. All features, including `SkinThickness`.
+    2. All features except `SkinThickness`.
+  - Standardize the features using `StandardScaler`.
+  - Perform 10-fold cross-validation for both models to compare their performance based on mean accuracy.
+
+### Part B: Calculating and Comparing Loss
+- **Objective**: Calculate the expected loss for different thresholds based on false positives (500) and false negatives (2000) and compare it with different decision thresholds.
+- **Approach**:
+  - Train a Logistic Regression model using the better-performing feature set from Part A.
+  - Compute the expected loss for:
+    1. A baseline model (predicting all zeros).
+    2. A model with a threshold of 0.5.
+    3. A model with a calculated "breakeven" threshold.
+  - Compare the losses on the test set.
+
+### Part C: Comparing Model Performance with ROC Curves
+- **Objective**: Compare the performance of Logistic Regression and LDA using ROC curves and AUC scores.
+- **Approach**:
+  - Train both Logistic Regression and LDA models on the test set.
+  - Plot the ROC curves for both models and calculate the AUC to compare their effectiveness in classifying diabetes.
+
+## Requirements
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+
 To install the required libraries, run:
 
+```bash
 pip install pandas numpy scikit-learn matplotlib
-Dataset
-
-This script uses the diabetes_dataset.csv dataset, which contains information about various health parameters and the outcome (whether the individual has diabetes or not). The dataset should include the following columns:
-
-Pregnancies
-Glucose
-BloodPressure
-SkinThickness
-Insulin
-BMI
-DiabetesPedigreeFunction
-Age
-Outcome (target variable)
-Output
-
-Part A: Cross-validation results showing the accuracy and standard deviation for both models (with and without SkinThickness).
-Part B: The computed loss for three different thresholds, including the naive baseline model.
-Part C: ROC curve comparison between Logistic Regression and LDA, including AUC scores.
